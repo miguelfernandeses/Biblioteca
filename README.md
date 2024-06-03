@@ -72,60 +72,35 @@ Passo 4: Iniciar o Servidor
 Inicie o servidor Apache e MySQL através do painel de controle do XAMPP ou WAMP.
 Acesse o projeto através do navegador: http://localhost/biblioteca-crud.
 
-Estrutura do Projeto
-
-biblioteca-crud/
-│
-├── config/
-│   └── Database.php
-│
-├── classes/
-│   ├── Autor.php
-│   ├── Livro.php
-│   └── Usuario.php
-│
-├── autores/
-│   ├── index.php
-│   ├── create.php
-│   ├── update.php
-│   └── delete.php
-│
-├── livros/
-│   ├── index.php
-│   ├── create.php
-│   ├── update.php
-│   └── delete.php
-│
-├── usuarios/
-│   ├── register.php
-│   ├── login.php
-│   └── logout.php
-│
-├── database/
-│   └── biblioteca.sql
-├── index.php
-├── README.md
-
-
 Uso
 
 Autores
 
 Listar Autores: http://localhost/biblioteca-crud/autores/index.php
+
 Adicionar Autor: http://localhost/biblioteca-crud/autores/create.php
+
 Editar Autor: http://localhost/biblioteca-crud/autores/update.php?id={id}
+
 Excluir Autor: http://localhost/biblioteca-crud/autores/delete.php?id={id}
 
 Livros
 Listar Livros: http://localhost/biblioteca-crud/livros/index.php
+
 Adicionar Livro: http://localhost/biblioteca-crud/livros/create.php
+
 Editar Livro: http://localhost/biblioteca-crud/livros/update.php?id={id}
+
 Excluir Livro: http://localhost/biblioteca-crud/livros/delete.php?id={id}
 
 Autenticação
+
 Registro: http://localhost/biblioteca-crud/usuarios/register.php
+
 Login: http://localhost/biblioteca-crud/usuarios/login.php
+
 Logout: http://localhost/biblioteca-crud/usuarios/logout.php
+
 
 
 Contribuição
