@@ -1,21 +1,27 @@
 <?php
+// Inclui os arquivos de configuração do banco de dados e a classe Usuario
 include_once 'config/Database.php';
 include_once 'classes/Usuario.php';
 
+// Cria uma nova instância da classe Database e obtém a conexão
 $database = new Database();
 $db = $database->getConnection();
 
 $usuario = new Usuario($db);
 
+
 if ($_POST) {
+    // Obtém os dados do formulário
     $usuario->username = $_POST['username'];
     $usuario->password = $_POST['password'];
 
+    // Tenta fazer login
     if ($usuario->login()) {
         session_start();
         $_SESSION['user_id'] = $usuario->id;
         header("Location: index.php");
     } else {
+        // Exibe mensagem de erro se o login falhar
         echo "<div class='alert alert-danger'>Usuário ou senha incorretos.</div>";
     }
 }

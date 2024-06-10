@@ -1,16 +1,21 @@
 <?php
+// Inclui os arquivos de configuração do banco de dados e a classe Autor
 include_once '../config/Database.php';
 include_once '../classes/Autor.php';
 
+// Cria uma nova instância da classe Database e obtém a conexão
 $database = new Database();
 $db = $database->getConnection();
 
+// Cria uma nova instância da classe Autor
 $autor = new Autor($db);
 
+// Configura a paginação
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $records_per_page = 5;
 $from_record_num = ($records_per_page * $page) - $records_per_page;
 
+// Obtém os autores com paginação
 $stmt = $autor->read($from_record_num, $records_per_page);
 $num = $stmt->rowCount();
 $total_rows = $autor->count();
@@ -28,6 +33,7 @@ $total_pages = ceil($total_rows / $records_per_page);
         <h2>Autores</h2>
         <a href="create.php" class="btn btn-primary">Adicionar Autor</a>
         <?php
+        // Verifica se há autores para exibir
         if ($num > 0) {
             echo "<table class='table table-bordered'>";
             echo "<tr><th>ID</th><th>Nome</th><th>Email</th><th>Ações</th></tr>";
@@ -42,6 +48,7 @@ $total_pages = ceil($total_rows / $records_per_page);
             }
             echo "</table>";
 
+            // Exibe a paginação
             echo "<nav aria-label='Page navigation'>";
             echo "<ul class='pagination'>";
             for ($i = 1; $i <= $total_pages; $i++) {
@@ -53,6 +60,7 @@ $total_pages = ceil($total_rows / $records_per_page);
             echo "<div class='alert alert-info'>Nenhum autor encontrado.</div>";
         }
         ?>
+        <a href="../index.php" class="btn btn-secondary">Página Inicial</a>
     </div>
 </body>
 </html>
